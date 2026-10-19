@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planificador de Bloque - Pujllay Pachachuyma</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Aquí enlazaremos nuestro archivo de estilos CSS en el siguiente paso -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Barra de navegación superior -->
+    <header class="navbar">
+        <div class="logo">
+            <h1>Pujllay Pachachuyma</h1>
+            <p>Organizador de Formación 2026</p>
+        </div>
+        <div class="controles">
+            <!-- Etiqueta que avisa si estamos en modo solo vista o edición -->
+            <span id="estado-modo" class="modo-vista">Modo: Solo Lectura</span>
+            <button id="btn-login" class="btn-primario">Acceso Admin</button>
+        </div>
+    </header>
+
+    <!-- Contenedor principal de la cuadrícula -->
+    <main class="contenedor-principal">
+        <p class="instrucciones">Visualización de la cuadrícula de la fraternidad. (Frente del bloque hacia arriba )</p>
+                <p class="instrucciones">(Guión o Estandarte)</p>
+        <!-- Aquí JavaScript inyectará los cuadraditos automáticamente -->
+        <div id="cuadricula-formacion" class="cuadricula"></div>
+    </main>
+
+    <!-- NUEVO: Ventana emergente (Modal) para el Inicio de Sesión Real -->
+    <div id="modal-login" class="modal oculto">
+        <div class="modal-contenido">
+            <h2>Acceso Administrador</h2>
+            <p style="text-align: center; margin-bottom: 15px; font-size: 0.9rem; color: #666;">Ingresa tus credenciales autorizadas.</p>
+            
+            <label for="input-correo">Correo electrónico:</label>
+            <input type="email" id="input-correo" placeholder="ej. admin@pujllay.com" autocomplete="off">
+
+            <label for="input-password">Contraseña:</label>
+            <input type="password" id="input-password" placeholder="Tu contraseña">
+
+            <div class="modal-botones">
+                <button id="btn-cancelar-login" class="btn-secundario">Cancelar</button>
+                <button id="btn-ingresar" class="btn-primario">Iniciar Sesión</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ventana emergente (Modal) para asignar rol y nombre al hacer clic en un puesto -->
+    <div id="modal-edicion" class="modal oculto">
+        <div class="modal-contenido">
+            <h2>Asignar Danzarín</h2>
+            
+            <label for="select-rol">Rol en la fraternidad:</label>
+            <select id="select-rol">
+                <option value="vacio">-- Seleccionar Rol --</option>
+                <option value="nusta_diario">Ñusta Diario</option>
+                <option value="nusta_fiesta">Ñusta de Fiesta</option>
+                <option value="bailarin">Bailarín</option>
+                <option value="guerrero">Varón Guerrero</option>
+                <option value="tata">Varón Tata</option>
+                <option value="tarka">Tocador/a de Tarka</option>
+                <option value="tambor">Tocador/a de Tambor</option>
+                <option value="bombo">Tocador/a de Bombo</option>
+                <option value="figura">Figura</option>
+            </select>
+
+            <label for="input-nombre">Nombre del fraterno:</label>
+            <input type="text" id="input-nombre" placeholder="Ej. Juan Pérez" autocomplete="off">
+
+            <!-- NUEVO: Selector de Estado de Pago -->
+            <label for="select-pago" style="margin-top: 15px;">Estado de Pago:</label>
+            <select id="select-pago">
+                <option value="debe">Debe (Falta cancelar)</option>
+                <option value="acuenta">A cuenta (Abono parcial)</option>
+                <option value="pagado">Pagado (Completado)</option>
+            </select>
+
+
+            <div class="modal-botones">
+                <button id="btn-cancelar" class="btn-secundario">Cancelar</button>
+                <button id="btn-guardar" class="btn-primario">Guardar Puesto</button>
+                <button id="btn-limpiar" class="btn-peligro oculto">Vaciar Puesto</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Aquí enlazaremos la lógica de JavaScript al final -->
+    <script type="module" src="app.js"></script>
+</body>
+</html>
